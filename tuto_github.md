@@ -18,7 +18,7 @@
 ## Envoyer un commit
 **Dans le cas où nous travaillons avec des branches, positionnez-vous dans la bonne branche. Voir [Se positionner dans une branche](#se-positionner-dans-une-branche) .**
 
-1. Ajouter les fichiers au commit: `git add -a` pour ajouter tous les fichiers du répertoire courant, ou `git add chemin/du/fichier` pour ajouter un fichier spécifique.
+1. Ajouter les fichiers au commit: `git add -A ` pour ajouter tous les fichiers du répertoire courant, ou `git add chemin/du/fichier` pour ajouter un fichier spécifique.
 
 2. Ajouter un message au commit: `git commit -m "Votre message"`
 
