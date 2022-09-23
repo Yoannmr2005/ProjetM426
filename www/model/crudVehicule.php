@@ -69,7 +69,7 @@ function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $ann
  * @param [string] $modele
  * @param [int] $nbChevaux
  * @param [string] $immatriculation
- * @return void
+ * @return string
  */
 function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
 {
@@ -92,16 +92,19 @@ function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
  * @param [int] $idVehicule
  * @return void
  */
-function modifyVehicule($marque, $modele, $nbChevaux, $immatriculation, $idVehicule, $annee)
+function modifyVehicule($nbChevaux, $immatriculation, $idVehicule)
 {
-    $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee);
-    if ($verify == "") {
-        // Modifier un véhicule dans la DB
-        PDO_Insert_Update_Delete("UPDATE vehicule SET `marque` = ?, `modele` = ?, `chevaux` = ?, `immatriculation` = ?, `annee` = ? WHERE `idVehicule` = ?", [$marque, $modele, $nbChevaux, $immatriculation, $annee, $idVehicule]);
-        return "";
-    }else {
-        return $verify;
+    if ($nbChevaux <= 0) {
+        return "Le nombre de chevaux est trop petit";
     }
+
+    if ($immatriculation == "") {
+        return "Une immatriculation est nécessaire";
+    }
+
+    // Modifier un véhicule dans la DB
+    PDO_Insert_Update_Delete("UPDATE vehicule SET `chevaux` = ?, `immatriculation` = ? WHERE `idVehicule` = ?", [$nbChevaux, $immatriculation, $idVehicule]);
+    return "";
 }
 
 /**
