@@ -9,8 +9,6 @@
  * @param date $dateFin
  * @return void
  */
-
-
 function add_location($idVehicule, $prix, $dateDebut, $dateFin){
     if($prix <= 0){ 
         echo "Le prix est inexistant.";
@@ -35,8 +33,7 @@ function add_location($idVehicule, $prix, $dateDebut, $dateFin){
  * @param date $dateFin
  * @return void
  */
-
-function update_Location($idVehicule, $prix, $dateDebut, $dateFin){
+function update_location($idVehicule, $prix, $dateDebut, $dateFin){
     if($prix <= 0){
         echo "Le prix est inexistant.";
         return;
@@ -47,12 +44,17 @@ function update_Location($idVehicule, $prix, $dateDebut, $dateFin){
         return;
     }
 
-    $req=dbRun()->prepare("UPDATE prix= :$prix, dateDebut= :$dateDebut, dateFin= :$dateFin WHERE idVehicule = :$idVehicule");
-    $req->execute(array(
-        'prix' => $nvprix,
-        'DateDebut' => $DateDebut,
-        'DateFin' => $DateFin
-    ));
+    $sql = "UPDATE prix= $prix, dateDebut= $dateDebut, dateFin= $dateFin WHERE idVehicule = $idVehicule";
+    $req = dbRun($sql);
 }
 
-
+/**
+ * Fonction qui supprime une location
+ *
+ * @param int $idVehicule
+ * @return void
+ */
+function delete_location($idVehicule){
+    $sql = "DELETE FROM `vehicule` WHERE idVehicule = $idVehicule";
+    $req = dbRun($sql);
+}
