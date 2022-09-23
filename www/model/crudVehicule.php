@@ -13,7 +13,7 @@ require_once("fonction.php");
  */
 function GetAllVehicule()
 {
-    $data = PDO_Select_All("SELECT `idvehicule`, `marque`, `modele`, `chevaux`, `immatriculation` FROM vehicule", []);
+    $data = PDO_Select_All("SELECT `idVehicule`, `marque`, `modele`, `chevaux`, `immatriculation`, `annee` FROM vehicule", []);
     return $data;
 }
 
@@ -24,7 +24,7 @@ function GetAllVehicule()
  * @return array
  */
 function GetOneVehiculeWithId($id){
-    $data = PDO_Select("SELECT `idvehicule`, `marque`, `modele`, `chevaux`, `immatriculation` FROM vehicule WHERE `idvehicule` = ?", [$id]);
+    $data = PDO_Select("SELECT `idVehicule`, `marque`, `modele`, `chevaux`, `immatriculation`, `annee` FROM vehicule WHERE `idVehicule` = ?", [$id]);
     return $data;
 }
 
@@ -37,7 +37,7 @@ function GetOneVehiculeWithId($id){
  * @param [string] $immatriculation
  * @return string
  */
-function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation)
+function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
 {
     if ($marque == "") {
         return "Une marque est nécessaire";
@@ -55,6 +55,9 @@ function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation)
         return "Une immatriculation est nécessaire";
     }
 
+    if ($annee <= 1940) {
+        return "L'année est trop ancienne";
+    }
     // S'il n'y a pas d'erreurs, on retourne un string vide
     return "";
 }
@@ -68,16 +71,17 @@ function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation)
  * @param [string] $immatriculation
  * @return void
  */
-function addVehicule($marque, $modele, $nbChevaux, $immatriculation)
+function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
 {
-    $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation);
+    $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee);
     if ($verify == "") {
-        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `chevaux`, `immatriculation` VALUES (?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation]);
+        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `chevaux`, `immatriculation`, `annee` VALUES (?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation, $annee]);
         return "";
     } else {
         return $verify;
     }
 }
+
 /**
  * fonction qui modifie un véhicule dans la DB avec l'id
  *
@@ -85,15 +89,15 @@ function addVehicule($marque, $modele, $nbChevaux, $immatriculation)
  * @param [string] $modele
  * @param [int] $nbChevaux
  * @param [string] $immatriculation
- * @param [int] $idvehicule
+ * @param [int] $idVehicule
  * @return void
  */
-function modifyVehicule($marque, $modele, $nbChevaux, $immatriculation, $idvehicule)
+function modifyVehicule($marque, $modele, $nbChevaux, $immatriculation, $idVehicule, $annee)
 {
-    $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation);
+    $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee);
     if ($verify == "") {
         // Modifier un véhicule dans la DB
-        PDO_Insert_Update_Delete("UPDATE vehicule SET `marque` = ?, `modele` = ?, `chevaux` = ?, `immatriculation` = ? WHERE `idvehicule` = ?", [$marque, $modele, $nbChevaux, $immatriculation, $idvehicule]);
+        PDO_Insert_Update_Delete("UPDATE vehicule SET `marque` = ?, `modele` = ?, `chevaux` = ?, `immatriculation` = ?, `annee` = ? WHERE `idVehicule` = ?", [$marque, $modele, $nbChevaux, $immatriculation, $annee, $idVehicule]);
         return "";
     }else {
         return $verify;
@@ -103,12 +107,12 @@ function modifyVehicule($marque, $modele, $nbChevaux, $immatriculation, $idvehic
 /**
  * fonction qui permet de supprimer un véhicule de la DB avec l'id
  *
- * @param [int] $idvehicule
+ * @param [int] $idVehicule
  * @return void
  */
-function deleteVehicule($idvehicule)
+function deleteVehicule($idVehicule)
 {
     // Supprime un véhicule
-    PDO_Insert_Update_Delete("DELETE FROM `vehicule` WHERE idvehicule = ?", [$idvehicule]);
+    PDO_Insert_Update_Delete("DELETE FROM `vehicule` WHERE idVehicule = ?", [$idVehicule]);
     return "";
 }
