@@ -42,7 +42,10 @@
             <div class="d-flex justify-content-center">
                 <form style="width: 490px;">
                     <div class="container">
-                        <label class="form-label"><input class="form-control" type="text" readonly="" name="id">Plaques d'immatriculation</label>
+                        <input class="form-control" type="text" readonly="" name="id">
+                        <label class="form-label">Plaques d'immatriculation</label>
+                        <input class="form-control" type="text" name="immatriculation">
+                        <label class="form-label">Chevaux</label>
                         <input class="form-control" type="number" min="10" max="3000">
                         <div>
                             <label class="form-label">Louée?&nbsp; &nbsp;</label>
