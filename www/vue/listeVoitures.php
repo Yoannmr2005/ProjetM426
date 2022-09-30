@@ -49,7 +49,25 @@
                             <th>Modifier</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <?php
+                        foreach ($allVoiture as $voiture) {
+                            $location = GetLocationWithId($voiture["idVehicule"]);
+                        ?>
+                            <tr>
+                                <td><?= $voiture["marque"] ?></td>
+                                <td><?= $voiture["modele"] ?></td>
+                                <td><?= $voiture["immatriculation"] ?></td>
+                                <td><?= $voiture["chevaux"] ?></td>
+                                <td><?= ($location == []) ? "Non" : "Oui" ;?></td>
+                                <td><?= ($location == []) ? "" : $location["dateDebut"] ?></td>
+                                <td><?= ($location == []) ? "" : $location["dateFin"] ?></td>
+                                <td><a href="index.php"></a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
