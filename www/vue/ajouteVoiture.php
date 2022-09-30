@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>bases</title>
+    <title>Ajout d'une voiture</title>
     <link rel="stylesheet" href="vue/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vue/assets/css/Navbar-Centered-Brand-Dark-icons.css">
 </head>
@@ -40,7 +40,7 @@
         </div>
         <div class="justify-content-center" style="text-align: center;font-size: 22px;">
             <div class="d-flex justify-content-center">
-                <form style="width: 490px;">
+                <form style="width: 490px;" method="POST">
                     <div class="container">
                         <label class="form-label">Marque</label>
                         <input class="form-control" type="text" name="marque">

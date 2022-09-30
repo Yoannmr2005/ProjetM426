@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>bases</title>
+    <title>Modification d'une voiture</title>
     <link rel="stylesheet" href="vue/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vue/assets/css/Navbar-Centered-Brand-Dark-icons.css">
 </head>
