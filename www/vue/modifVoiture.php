@@ -20,11 +20,15 @@
 <body class="bg-secondary bg-gradient d-flex flex-column justify-content-between" style="height: auto;">
     <div>
         <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
-            <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img
-                        src="vue/assets/img/logo.png" width="208" height="113"><span></span></a><button
-                    data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span
-                        class="visually-hidden">Toggle navigation</span><span
-                        class="navbar-toggler-icon"></span></button>
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="vue/assets/img/logo.png" width="208" height="113">
+                    <span></span>
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5">
+                    <span class="visually-hidden">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navcol-5">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
@@ -40,7 +44,7 @@
         </div>
         <div class="justify-content-center" style="text-align: center;font-size: 22px;">
             <div class="d-flex justify-content-center">
-                <form style="width: 490px;">
+                <form style="width: 490px;" method="POST">
                     <div class="container">
                         <input class="form-control" type="text" readonly="" name="id">
                         <label class="form-label">Plaques d'immatriculation</label>
@@ -60,7 +64,9 @@
                     <input class="form-control" type="text">
                     <div class="container d-flex justify-content-around" style="height: 44px;padding-top: 10px;">
                         <button class="btn btn-primary" type="submit" style="background: var(--bs-red);">Sauvegarder</button>
-                        <button class="btn btn-primary" type="button" style="background: var(--bs-red);"><a style="color:white; text-decoration:none;" href="../controller/delete.php">Effacer le véhicule</a></button>
+                        <button class="btn btn-primary" type="button" style="background: var(--bs-red);">
+                            <a style="color:white; text-decoration:none;" href="../controller/delete.php">Effacer le véhicule</a>
+                        </button>
                     </div>
                 </form>
             </div>
