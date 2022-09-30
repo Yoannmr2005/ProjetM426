@@ -57,7 +57,7 @@
                     <input class="form-control" type="text">
                     <div class="container d-flex justify-content-around" style="height: 44px;padding-top: 10px;">
                         <button class="btn btn-primary" type="submit" style="background: var(--bs-red);">Sauvegarder</button>
-                        <button class="btn btn-primary" type="button" style="background: var(--bs-red);"><a href="../controller/delete.php">Effacer le véhicule</a></button>
+                        <button class="btn btn-primary" type="button" style="background: var(--bs-red);"><a style="color:white; text-decoration:none;" href="../controller/delete.php">Effacer le véhicule</a></button>
                     </div>
                 </form>
             </div>
