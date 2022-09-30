@@ -53,15 +53,15 @@
                         <input class="form-control" type="number" min="10" max="3000">
                         <div>
                             <label class="form-label">Louée?&nbsp; &nbsp;</label>
-                            <input type="checkbox">
+                            <input type="checkbox" name="boolLocation">
                         </div>
                     </div>
                     <label class="form-label">Si oui; Date début</label>
-                    <input class="form-control" type="date">
+                    <input class="form-control" type="date" name="dateDebut">
                     <label class="form-label">Date fin</label>
-                    <input class="form-control" type="date">
+                    <input class="form-control" type="date" name="dateFin">
                     <label class="form-label">Locataire</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" name="locataire">
                     <div class="container d-flex justify-content-around" style="height: 44px;padding-top: 10px;">
                         <button class="btn btn-primary" type="submit" style="background: var(--bs-red);">Sauvegarder</button>
                         <button class="btn btn-primary" type="button" style="background: var(--bs-red);">
