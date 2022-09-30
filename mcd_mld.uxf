@@ -1,0 +1,39 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLNote</id><coordinates><x>120</x><y>30</y><w>380</w><h>170</h></coordinates><panel_attributes>MCD :
+--
+USER(
+_idUser_
+, username, email, password)
+--
+VEHICULE(
+_idVehicule_
+, marque, modele, annee, immatriculation, nbChevaux, #idUser)
+--
+LOCATION(
+_idLocation_
+, dateDebut, dateFin, locataire, #idVehicule)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>470</y><w>170</w><h>90</h></coordinates><panel_attributes>_USER_
+--
+idUser: smallint="6"
+username: varchar="32"
+email: varchar="320"
+password: char="60"</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>470</y><w>170</w><h>130</h></coordinates><panel_attributes>_VEHICULE_
+--
+idVehicule: smallint="6"
+marque: varchar="30"
+modele: varchar="50"
+annee: year
+immatriculation: varchar="7"
+nbChevaux: smallint="4"
+#idUser: smallint="6"</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>740</x><y>470</y><w>170</w><h>100</h></coordinates><panel_attributes>_LOCATION_
+--
+idLocation: smallint="6"
+dateDebut: datetime
+dateFin: datetime
+locataire: varchar="60"
+#idVehicule: smallint="6"</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>510</y><w>210</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1..1
+possèder &gt;</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>520</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1..1
+ &lt; concerner</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element></diagram>
