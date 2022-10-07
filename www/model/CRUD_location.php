@@ -8,7 +8,7 @@
  */
 function GetLocationWithId($idvoiture)
 {
-    return PDO_Select("SELECT `idLocation`,`locataire`, `datDebut`,`dateFin`,`idVehicule` FROM `location` WHERE `idVehicule` = ?",[$idvoiture]);
+    return PDO_Select("SELECT `idLocation`,`locataire`, `dateDebut`,`dateFin`,`idVehicule` FROM `location` WHERE `idVehicule` = ?",[$idvoiture]);
 }
 
 

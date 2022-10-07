@@ -4,13 +4,15 @@ define("ROOT", ".");
 
 require_once(ROOT . "/const.php");
 require_once(ROOT . "/model/user.php");
+require_once(ROOT . "/model/crudVehicule.php");
+require_once(ROOT . "/model/CRUD_location.php");
 require_once(ROOT . "/pdo.php");
 
 $path = isset($_GET["p"]) ? filter_input(INPUT_GET, "p", FILTER_SANITIZE_SPECIAL_CHARS) : null;
 
-if(!is_logged() && $path != "signup" && $path != "login"){
-    $path = "login";
-}
+// if(!is_logged() && $path != "signup" && $path != "login"){
+//     $path = "login";
+// }
 
 switch($path){
     case "login":
@@ -23,5 +25,8 @@ switch($path){
         $password2 = isset($_POST["password2"]) ? filter_input(INPUT_POST, "password2", FILTER_SANITIZE_SPECIAL_CHARS) : null;
         signup_verify($username, $email, $password, $password2);
         require_once(ROOT . "/vue/inscription.php");
+        break;
+    case "voiture":
+        require_once(ROOT . "/controller/controlleur_vehicule.php");
         break;
 }

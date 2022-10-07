@@ -28,11 +28,13 @@ switch ($action) {
                 echo $dataOk;
             }
         }
-        include("vue/ajouteVoiture.html");
+        include("vue/ajouteVoiture.php");
         break;
     case 'modify':
         // Récupère l'id du véhicule
         $idVehicule = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+        // Récupère les données du véhicule
+        $dataVoiture = GetOneVehiculeWithId($idVehicule);
         // Filtre des données
         $chevaux = filter_input(INPUT_POST, "chevaux", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $immatriculation = filter_input(INPUT_POST, "immatriculation", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -44,11 +46,13 @@ switch ($action) {
                 echo $modifyOk;
             }
         }
-        include("vue/modifVoiture.html");
+        include("vue/modifVoiture.php");
         break;
     case 'delete':
         // Récupère l'id du véhicule
         $idVehicule = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+        delete_location($idVehicule);
         deleteVehicule($idVehicule);
+        header("location: index.php?p=voiture");
         break;
 }

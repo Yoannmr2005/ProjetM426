@@ -51,6 +51,11 @@
                     </thead>
                     <tbody>
                         <?php
+                        if ($allVoiture == []) {
+                            ?>
+                            <h3>Aucun véhicule</h3>
+                            <?php
+                        }
                         foreach ($allVoiture as $voiture) {
                             $location = GetLocationWithId($voiture["idVehicule"]);
                         ?>
@@ -58,11 +63,14 @@
                                 <td><?= $voiture["marque"] ?></td>
                                 <td><?= $voiture["modele"] ?></td>
                                 <td><?= $voiture["immatriculation"] ?></td>
-                                <td><?= $voiture["chevaux"] ?></td>
-                                <td><?= ($location == []) ? "Non" : "Oui" ;?></td>
+                                <td><?= $voiture["nbChevaux"] ?></td>
+                                <td><?= ($location == []) ? "" : $location["locataire"] ?></td>
+                                <td><?= ($location == []) ? "Non" : "Oui"; ?></td>
                                 <td><?= ($location == []) ? "" : $location["dateDebut"] ?></td>
                                 <td><?= ($location == []) ? "" : $location["dateFin"] ?></td>
-                                <td><a href="index.php"></a></td>
+                                <td><a href="index.php?p=voiture&a=modify&id=<?= $voiture["idVehicule"] ?>">Modifier</a>
+                                    <a href="index.php?p=voiture&a=delete&id=<?= $voiture["idVehicule"] ?>">Supprimer</a>
+                                </td>
                             </tr>
                         <?php
                         }
