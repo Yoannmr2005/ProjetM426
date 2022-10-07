@@ -46,7 +46,7 @@
                                     </svg></div>
                                 <form class="text-center" method="post">
                                     <div class="mb-3">
-                                        <input class="form-control" type="email" name="email" placeholder="Email">
+                                        <input class="form-control" type="text" name="username_or_email" placeholder="Nom d'utilisateur ou email">
                                     </div>
                                     <div class="mb-3">
                                         <input class="form-control" type="password" name="password" placeholder="Mot de passe">

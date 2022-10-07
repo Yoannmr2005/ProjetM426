@@ -26,7 +26,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                         <li class="nav-item"></li>
                         <li class="nav-item"></li>
-                    </ul><a class="btn btn-primary ms-md-2" role="button" href="#" style="background: rgb(253,13,13);">Connexion</a>
+                    </ul><a class="btn btn-primary ms-md-2" role="button" href="?p=login" style="background: rgb(253,13,13);">Connexion</a>
                 </div>
             </div>
         </nav>

@@ -88,6 +88,57 @@ function signup($username, $email, $password){
     $req = dbRun($sql);
 }
 
+function login_verify($username_or_email, $password)
+{
+    if ($username_or_email === null && $password === null) // si le username, l'email et le mot de passe sont inexistants 
+        return;
+
+    if ($username_or_email === "" || $password === "") { // vérifie si les formulaires sont complets
+        echo "<p id=\"errorMsg\">Please complete all fields.</p>";
+        return;
+    }
+
+    if (filter_var($username_or_email, FILTER_VALIDATE_EMAIL)) // vérfie si c'est un email
+        $is_email = true;
+    else
+        $is_email = false;
+
+    if ($is_email) { // si c'est un email
+        $user_find = find_user("email", $username_or_email); // recherche de l'utilisateur via son email
+        if (!$user_find) { // si l'utilisateur n'existe pas
+            echo "<p id=\"errorMsg\">User not found.</p>";
+            return;
+        }
+
+        if (password_verify($password, $user_find[0]["password"])) { // si le password est correct
+            connect(intval($user_find[0]["idUser"]), $user_find[0]["username"], $user_find[0]["email"]);
+        } else {
+            echo "<p id=\"errorMsg\">Incorrect password.</p>";
+            return;
+        }
+    } else { // si ce n'est pas un email
+        $user_find = find_user("username", $username_or_email); // recherche de l'utilisateur via son username
+        if (!$user_find) { // si l'utilisateur n'existe pas
+            echo "<p id=\"errorMsg\">User not found.</p>";
+            return;
+        }
+
+        if (password_verify($password, $user_find[0]["password"])) { // si le password est correct
+            connect(intval($user_find[0]["idUser"]), $user_find[0]["username"], $user_find[0]["email"]);
+        } else {
+            echo "<p id=\"errorMsg\">Incorrect password.</p>";
+            return;
+        }
+    }
+}
+
+function connect($idUser, $username, $email)
+{
+    $_SESSION["id"] = $idUser;
+    $_SESSION["username"] = $username;
+    $_SESSION["email"] = $email;
+}
+
 function logout()
 {
     // initialisation de la session
