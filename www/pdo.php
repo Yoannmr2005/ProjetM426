@@ -5,14 +5,13 @@
  * Projet du module M426
  */
 
-require_once "/php/config.php";
 
 // Constante
 define("DB_HOST","localhost");
 define("DB_PORT", 3306);
-define("DB_NAME","");
-define("DB_USER","");
-define("DB_PASS","");
+define("DB_NAME","fuegolocation");
+define("DB_USER","kylian");
+define("DB_PASS","Super");
 
 /**
  * fonction qui connecte à une DB en utilisant PDO
