@@ -40,44 +40,44 @@ function signup_verify($username, $email, $password, $password_conf){
         return;
     }
 
-    if($username < USERNAME_MIN_LENGTH){
+    if(strlen($username) < 3){
         echo "Nom d'utilisateur trop court.";
         return;
     }
 
-    /*if($username > USERNAME_MAX_LENGTH){
+    if(strlen($username) > 45){
         echo "Nom d'utilisateur trop long.";
         return;
-    }*/
+    }
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         echo "Email invalide.";
         return;
     }
 
-    if($email < EMAIL_MIN_LENGTH){
+    if(strlen($email) < 5){
         echo "Email trop court.";
         return;
     }
 
-    /*if($email > EMAIL_MAX_LENGTH){
+    if(strlen($email) > 100){
         echo "Email trop long.";
         return;
-    }*/
+    }
 
     if($password != $password_conf){
         echo "Les mots de passes ne correspondent pas.";
     }
 
-    if($password < PASSWORD_MIN_LENGTH){
+    if(strlen($password) < 4){
         echo "Mot de passe trop court.";
         return;
     }
 
-    /*if($password > PASSWORD_MAX_LENGTH){
+    if(strlen($password) > 60){
         echo "Mot de passe trop long.";
         return;
-    }*/
+    }
 
     signup($username, $email, password_hash($password, PASSWORD_DEFAULT));
 

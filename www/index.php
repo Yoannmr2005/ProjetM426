@@ -21,7 +21,7 @@ switch($path){
         $email = isset($_POST["email"]) ? filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL) : null;
         $password = isset($_POST["password"]) ? filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS) : null;
         $password2 = isset($_POST["password2"]) ? filter_input(INPUT_POST, "password2", FILTER_SANITIZE_SPECIAL_CHARS) : null;
-        require_once(ROOT . "/vue/inscription.php");
         signup_verify($username, $email, $password, $password2);
+        require_once(ROOT . "/vue/inscription.php");
         break;
 }

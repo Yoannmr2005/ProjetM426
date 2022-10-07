@@ -1,6 +1,6 @@
 <?php 
 
-require_once("../pdo.php");
+require_once("pdo.php");
 
 function PDO_Select_All($sql,$param){
     $query = dbRun($sql,$param);
