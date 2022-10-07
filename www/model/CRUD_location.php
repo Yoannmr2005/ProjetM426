@@ -4,57 +4,54 @@
  * Fonction qui permet l'ajout d'une location de véhicule
  *
  * @param int $idVehicule
- * @param int $prix
+ * @param string $locataire
  * @param date $dateDebut
  * @param date $dateFin
  * @return void
  */
-function add_location($idVehicule, $prix, $dateDebut, $dateFin){
-    if($prix <= 0){ 
-        echo "Le prix est inexistant.";
+function add_location($idVehicule, $locataire, $dateDebut, $dateFin){
+    if($idVehicule === null && $locataire === null && $dateDebut === null && $dateFin === null)
         return;
-    }
-
     if($dateDebut > $dateFin) {
         echo "Les dates sont erronées";
         return;
     }
 
-    $sql = "INSERT INTO `vehicule`(`idVehicule`, `prix`, `dateDebut`, `dateFin`) VALUES (?, ?, ?, ?)";
-    $req = dbRun($sql, [$idVehicule, $prix, $dateDebut, $dateFin]);
+    $sql = "INSERT INTO `location`(`idVehicule`, `locataire`, `dateDebut`, `dateFin`) VALUES ('$idVehicule', '$locataire', '$dateDebut', '$dateFin')";
+    $req = dbRun($sql);
 }
 
 /**
  * Fonction qui permet la modification de la location du véhicule
  *
  * @param int $idVehicule
- * @param int $prix
+ * @param string $locataire
  * @param date $dateDebut
  * @param date $dateFin
  * @return void
  */
-function update_location($idVehicule, $prix, $dateDebut, $dateFin){
-    if($prix <= 0){
-        echo "Le prix est inexistant.";
+function update_location($idVehicule, $locataire, $dateDebut, $dateFin){
+    if($idVehicule === null && $locataire === null && $dateDebut === null && $dateFin === null)
         return;
-    }
     
     if($dateFin < $dateDebut) {
         echo "Les dates sont erronées";
         return;
     }
 
-    $sql = "UPDATE prix= $prix, dateDebut= $dateDebut, dateFin= $dateFin WHERE idVehicule = $idVehicule";
+    $sql = "UPDATE location SET locataire= $locataire, dateDebut= $dateDebut, dateFin= $dateFin WHERE idocation = $idlocation";
     $req = dbRun($sql);
 }
 
 /**
  * Fonction qui supprime une location
  *
- * @param int $idVehicule
+ * @param int $idlocation
  * @return void
  */
-function delete_location($idVehicule){
-    $sql = "DELETE FROM `vehicule` WHERE idVehicule = $idVehicule";
+function delete_location($idlocation){
+    if($id === null)
+        return;
+    $sql = "DELETE FROM `location` WHERE idlocation = $idlocation";
     $req = dbRun($sql);
 }
