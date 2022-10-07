@@ -1,58 +1,70 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+02:00";
+-- MySQL Workbench Forward Engineering
 
-CREATE DATABASE IF NOT EXISTS `fuegoLocation` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `fuegoLocation`;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema fuegolocation
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema fuegolocation
+-- -----------------------------------------------------
+/*DROP DATABASE IF EXISTS fuegolocation;*/
+CREATE DATABASE fuegolocation CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE fuegolocation;
+
+-- -----------------------------------------------------
+-- Table `fuegolocation`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fuegolocation`.`user` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idUser`))
+ENGINE = InnoDB;
 
 
-CREATE TABLE `user` (
-	`idUser` SMALLINT(6) UNSIGNED NOT NULL,
-	`username` VARCHAR(32) NOT NULL,
-	`email` VARCHAR(320) NOT NULL,
-	`password` CHAR(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- -----------------------------------------------------
+-- Table `fuegolocation`.`vehicule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fuegolocation`.`vehicule` (
+  `idVehicule` INT NOT NULL AUTO_INCREMENT,
+  `marque` VARCHAR(60) NOT NULL,
+  `modele` VARCHAR(45) NOT NULL,
+  `annee` INT NOT NULL,
+  `immatriculation` VARCHAR(7) NOT NULL,
+  `nbChevaux` INT NOT NULL,
+  `idUser` INT NOT NULL,
+  PRIMARY KEY (`idVehicule`),
+  CONSTRAINT `fk_vehicule_user1`
+    FOREIGN KEY (`idUser`)
+    REFERENCES `fuegolocation`.`user` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE `vehicule` (
-	`idVehicule` SMALLINT(6) UNSIGNED NOT NULL,
-	`marque` VARCHAR(30) NOT NULL,
-	`modele` VARCHAR(50) NOT NULL,
-	`annee` YEAR NOT NULL,
-	`immatriculation` VARCHAR(7) NOT NULL,
-	`nbChevaux` SMALLINT(4) UNSIGNED NOT NULL,
-	`idUser` SMALLINT(6) UNSIGNED
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `location` (
-	`idLocation` SMALLINT(6) UNSIGNED NOT NULL,
-	`locataire` VARCHAR(30) NOT NULL,
-	`dateDebut` DATETIME NOT NULL,
-	`dateFin` DATETIME NOT NULL,
-	`idVehicule` SMALLINT(6) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- -----------------------------------------------------
+-- Table `fuegolocation`.`location`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fuegolocation`.`location` (
+  `idlocation` INT NOT NULL AUTO_INCREMENT,
+  `locataire` VARCHAR(45) NOT NULL,
+  `dateDebut` DATETIME NOT NULL,
+  `dateFni` DATETIME NOT NULL,
+  `idVehicule` INT NOT NULL,
+  PRIMARY KEY (`idlocation`),
+  CONSTRAINT `fk_location_vehicule1`
+    FOREIGN KEY (`idVehicule`)
+    REFERENCES `fuegolocation`.`vehicule` (`idVehicule`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---ALTER TABLE `user`
---    MODIFY `idUser` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
---ALTER TABLE `vehicule`
---    MODIFY `idVehicule` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
-
-ALTER TABLE `user`
-    ADD PRIMARY KEY (`idUser`),
-    ADD UNIQUE KEY `username` (`username`),
-    ADD UNIQUE KEY `email` (`email`) USING BTREE;
-
-ALTER TABLE `vehicule`
-    ADD PRIMARY KEY (`idVehicule`),
-    ADD UNIQUE KEY `id` (`idVehicule`,`idUser`) USING BTREE;
-
-ALTER TABLE `location`
-    ADD PRIMARY KEY (`idLocation`);
-
-ALTER TABLE `location`
-	ADD CONSTRAINT `fk_location`
-    FOREIGN KEY (idVehicule)
-    REFERENCES vehicule (idVehicule)
-    ON DELETE CASCADE
-	ON UPDATE CASCADE;
-
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
