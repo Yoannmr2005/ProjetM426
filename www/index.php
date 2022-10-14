@@ -9,13 +9,13 @@ require_once(ROOT . "/pdo.php");
 $path = isset($_GET["p"]) ? filter_input(INPUT_GET, "p", FILTER_SANITIZE_SPECIAL_CHARS) : null;
 
 if(!$path)
-    header("location: ?p=home");
+    header("location: ".ROOT."/?p=home");
 
-if(!is_logged())
-    header("location: ?p=home");
+if(!is_logged() && $path != "home" && $path != "login" && $path != "signup")
+    header("location: ".ROOT."/?p=home");
 
 if(is_logged() && ($path == "login" || $path == "signup"))
-    header("location: ?p=home");
+    header("location: ".ROOT."/?p=home");
 
 switch($path){
     case "home":
@@ -40,9 +40,10 @@ switch($path){
         signup_verify($username, $email, $password, $password2);
         require_once(ROOT . "/vue/inscription.php");
         break;
-    /*case "logout":
-        if(is_logged())
+    case "logout":
+        if(is_logged()){
             logout();
-            header("location: ?p=home");
-        break;*/
+            header("location: ".ROOT."?p=home");
+        }
+        break;
 }

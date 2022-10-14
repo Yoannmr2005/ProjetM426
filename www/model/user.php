@@ -80,6 +80,7 @@ function signup_verify($username, $email, $password, $password_conf){
     }
 
     signup($username, $email, password_hash($password, PASSWORD_DEFAULT));
+    header("location: ".ROOT."/?p=login");
 
 }
 
@@ -112,6 +113,7 @@ function login_verify($username_or_email, $password)
 
         if (password_verify($password, $user_find[0]["password"])) { // si le password est correct
             connect(intval($user_find[0]["idUser"]), $user_find[0]["username"], $user_find[0]["email"]);
+            header("location: ".ROOT."/?p=home");
         } else {
             echo "<p id=\"errorMsg\">Incorrect password.</p>";
             return;
@@ -125,6 +127,7 @@ function login_verify($username_or_email, $password)
 
         if (password_verify($password, $user_find[0]["password"])) { // si le password est correct
             connect(intval($user_find[0]["idUser"]), $user_find[0]["username"], $user_find[0]["email"]);
+            header("location: ".ROOT."/?p=home");
         } else {
             echo "<p id=\"errorMsg\">Incorrect password.</p>";
             return;
