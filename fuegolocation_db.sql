@@ -52,7 +52,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fuegolocation`.`location` (
   `idlocation` INT NOT NULL AUTO_INCREMENT,
-  `prix` INT NOT NULL,
   `locataire` VARCHAR(45) NOT NULL,
   `dateDebut` DATE NOT NULL,
   `dateFin` DATE NOT NULL,
