@@ -45,6 +45,9 @@ switch ($action) {
             // Affiche l'erreur si il y a eu une erreur
             if ($modifyOk != "") {
                 echo $modifyOk;
+            }else {
+                header("location: index.php?p=voiture");
+                exit;
             }
         }
         include("vue/modifVoiture.php");
