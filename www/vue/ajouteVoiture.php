@@ -31,7 +31,7 @@
                             <a class="nav-link" href="<?=ROOT?>/?p=voiture">Liste des véhicules</a>
                         </li>
                     </ul>
-                    <a class="btn btn-primary ms-md-2" role="button" href="#" style="background: var(--bs-red);">Déconnexion</a>
+                    <a class="btn btn-primary ms-md-2" role="button" href="?p=logout" style="background: var(--bs-red);">Déconnexion</a>
                 </div>
             </div>
         </nav>
