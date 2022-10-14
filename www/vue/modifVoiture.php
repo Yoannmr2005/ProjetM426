@@ -50,7 +50,7 @@
                         <label class="form-label">Plaques d'immatriculation</label>
                         <input class="form-control" type="text" name="immatriculation" value="<?= $dataVoiture["immatriculation"] ?>">
                         <label class="form-label">Chevaux</label>
-                        <input class="form-control" type="number" min="10" max="3000"value="<?= $dataVoiture["nbChevaux"] ?>">
+                        <input class="form-control" type="number" name="chevaux" min="10" max="3000"value="<?= $dataVoiture["nbChevaux"] ?>">
                         <div>
                             <label class="form-label">Louée?&nbsp; &nbsp;</label>
                             <input type="checkbox" name="boolLocation">
@@ -63,7 +63,7 @@
                     <label class="form-label">Locataire</label>
                     <input class="form-control" type="text" name="locataire">
                     <div class="container d-flex justify-content-around" style="height: 44px;padding-top: 10px;">
-                        <button class="btn btn-primary" type="submit" style="background: var(--bs-red);">Sauvegarder</button>
+                        <button class="btn btn-primary" type="submit" name="modifier" value="modifier" style="background: var(--bs-red);">Sauvegarder</button>
                         <button class="btn btn-primary" type="button" style="background: var(--bs-red);">
                             <a style="color:white; text-decoration:none;" href="../controller/delete.php">Effacer le véhicule</a>
                         </button>

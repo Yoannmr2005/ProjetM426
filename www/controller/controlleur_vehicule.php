@@ -20,6 +20,7 @@ switch ($action) {
             $dataOk = verifyDataVehicule($marque, $modele, $chevaux, $immatriculation, $annee);
             if ($dataOk == "") {
                 // Ajoute le véhicule
+                $immatriculation = str_replace("-","",$immatriculation);
                 addVehicule($marque, $modele, $chevaux, $immatriculation, $annee, $_SESSION["id"]);
                 header("location: index.php");
                 exit;
@@ -44,6 +45,9 @@ switch ($action) {
             // Affiche l'erreur si il y a eu une erreur
             if ($modifyOk != "") {
                 echo $modifyOk;
+            }else {
+                header("location: index.php?p=voiture");
+                exit;
             }
         }
         include("vue/modifVoiture.php");
