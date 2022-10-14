@@ -24,11 +24,11 @@
                 <div class="collapse navbar-collapse" id="navcol-5">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link active" href="<?=ROOT?>/?p=home">Home</a>
                         </li>
                         <li class="nav-item"></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Liste des véhicules</a>
+                            <a class="nav-link" href="<?=ROOT?>/?p=voiture">Liste des véhicules</a>
                         </li>
                     </ul>
                     <a class="btn btn-primary ms-md-2" role="button" href="#" style="background: var(--bs-red);">Déconnexion</a>

@@ -13,7 +13,7 @@ require_once("fonction.php");
  */
 function GetAllVehicule()
 {
-    $data = PDO_Select_All("SELECT `idVehicule`, `marque`, `modele`, `chevaux`, `immatriculation`, `annee` FROM vehicule", []);
+    $data = PDO_Select_All("SELECT `idVehicule`, `marque`, `modele`, `nbChevaux`, `immatriculation`, `annee` FROM vehicule", []);
     return $data;
 }
 
@@ -24,7 +24,7 @@ function GetAllVehicule()
  * @return array
  */
 function GetOneVehiculeWithId($id){
-    $data = PDO_Select("SELECT `idVehicule`, `marque`, `modele`, `chevaux`, `immatriculation`, `annee` FROM vehicule WHERE `idVehicule` = ?", [$id]);
+    $data = PDO_Select("SELECT `idVehicule`, `marque`, `modele`, `nbChevaux`, `immatriculation`, `annee` FROM vehicule WHERE `idVehicule` = ?", [$id]);
     return $data;
 }
 
@@ -75,7 +75,7 @@ function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
 {
     $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee);
     if ($verify == "") {
-        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `chevaux`, `immatriculation`, `annee` VALUES (?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation, $annee]);
+        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `nbChevaux`, `immatriculation`, `annee`) VALUES (?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation, $annee]);
         return "";
     } else {
         return $verify;
@@ -103,7 +103,7 @@ function modifyVehicule($nbChevaux, $immatriculation, $idVehicule)
     }
 
     // Modifier un véhicule dans la DB
-    PDO_Insert_Update_Delete("UPDATE vehicule SET `chevaux` = ?, `immatriculation` = ? WHERE `idVehicule` = ?", [$nbChevaux, $immatriculation, $idVehicule]);
+    PDO_Insert_Update_Delete("UPDATE vehicule SET `nbChevaux` = ?, `immatriculation` = ? WHERE `idVehicule` = ?", [$nbChevaux, $immatriculation, $idVehicule]);
     return "";
 }
 

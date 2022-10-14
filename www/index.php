@@ -4,6 +4,8 @@ define("ROOT", ".");
 
 require_once(ROOT . "/const.php");
 require_once(ROOT . "/model/user.php");
+require_once(ROOT . "/model/crudVehicule.php");
+require_once(ROOT . "/model/CRUD_location.php");
 require_once(ROOT . "/pdo.php");
 
 $path = isset($_GET["p"]) ? filter_input(INPUT_GET, "p", FILTER_SANITIZE_SPECIAL_CHARS) : null;
@@ -45,5 +47,7 @@ switch($path){
             logout();
             header("location: ".ROOT."?p=home");
         }
+    case "voiture":
+        require_once(ROOT . "/controller/controlleur_vehicule.php");
         break;
 }

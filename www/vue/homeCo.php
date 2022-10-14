@@ -23,9 +23,9 @@
             <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="vue/assets/img/logo.png" width="208" height="113"><span></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-5">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="<?=ROOT?>/?p=home">Home</a></li>
                         <li class="nav-item"></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Liste des véhicules</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?=ROOT?>/?p=voiture">Liste des véhicules</a></li>
                     </ul><a class="btn btn-primary ms-md-2" role="button" href="?p=logout" style="background: rgb(253,13,13);">Déconnexion</a>
                 </div>
             </div>

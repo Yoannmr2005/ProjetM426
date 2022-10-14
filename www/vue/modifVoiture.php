@@ -31,9 +31,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navcol-5">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="<?=ROOT?>/?p=home">Home</a></li>
                         <li class="nav-item"></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Liste des véhicules</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?=ROOT?>/?p=voiture">Liste des véhicules</a></li>
                     </ul><a class="btn btn-primary ms-md-2" role="button" href="#"
                         style="background: var(--bs-red);">Déconnexion</a>
                 </div>
@@ -46,11 +46,11 @@
             <div class="d-flex justify-content-center">
                 <form style="width: 490px;" method="POST">
                     <div class="container">
-                        <input class="form-control" type="text" readonly="" name="id">
+                        <input class="form-control" type="text" value="<?= $idVehicule ?>" readonly="" name="id">
                         <label class="form-label">Plaques d'immatriculation</label>
-                        <input class="form-control" type="text" name="immatriculation">
+                        <input class="form-control" type="text" name="immatriculation" value="<?= $dataVoiture["immatriculation"] ?>">
                         <label class="form-label">Chevaux</label>
-                        <input class="form-control" type="number" min="10" max="3000">
+                        <input class="form-control" type="number" min="10" max="3000"value="<?= $dataVoiture["nbChevaux"] ?>">
                         <div>
                             <label class="form-label">Louée?&nbsp; &nbsp;</label>
                             <input type="checkbox" name="boolLocation">

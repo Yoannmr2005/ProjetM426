@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Fonction qui récupère la location d'une voiture avec son id
+ *
+ * @param int $idvoiture
+ * @return void
+ */
+function GetLocationWithId($idvoiture)
+{
+    return PDO_Select("SELECT `idLocation`,`locataire`, `dateDebut`,`dateFin`,`idVehicule` FROM `location` WHERE `idVehicule` = ?",[$idvoiture]);
+}
+
+
+/**
  * Fonction qui permet l'ajout d'une location de véhicule
  *
  * @param int $idVehicule
@@ -9,13 +21,14 @@
  * @param date $dateFin
  * @return void
  */
-function add_location($idVehicule, $prix, $dateDebut, $dateFin){
-    if($prix <= 0){ 
+function add_location($idVehicule, $prix, $dateDebut, $dateFin)
+{
+    if ($prix <= 0) {
         echo "Le prix est inexistant.";
         return;
     }
 
-    if($dateDebut > $dateFin) {
+    if ($dateDebut > $dateFin) {
         echo "Les dates sont erronées";
         return;
     }
@@ -33,13 +46,14 @@ function add_location($idVehicule, $prix, $dateDebut, $dateFin){
  * @param date $dateFin
  * @return void
  */
-function update_location($idVehicule, $prix, $dateDebut, $dateFin){
-    if($prix <= 0){
+function update_location($idVehicule, $prix, $dateDebut, $dateFin)
+{
+    if ($prix <= 0) {
         echo "Le prix est inexistant.";
         return;
     }
-    
-    if($dateFin < $dateDebut) {
+
+    if ($dateFin < $dateDebut) {
         echo "Les dates sont erronées";
         return;
     }
@@ -54,7 +68,8 @@ function update_location($idVehicule, $prix, $dateDebut, $dateFin){
  * @param int $idVehicule
  * @return void
  */
-function delete_location($idVehicule){
+function delete_location($idVehicule)
+{
     $sql = "DELETE FROM `vehicule` WHERE idVehicule = $idVehicule";
     $req = dbRun($sql);
 }
