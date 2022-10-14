@@ -71,11 +71,11 @@ function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $ann
  * @param [string] $immatriculation
  * @return string
  */
-function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee)
+function addVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee, $idUser)
 {
     $verify = verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $annee);
     if ($verify == "") {
-        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `nbChevaux`, `immatriculation`, `annee`) VALUES (?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation, $annee]);
+        PDO_Insert_Update_Delete("INSERT INTO vehicule (`marque`, `modele`, `nbChevaux`, `immatriculation`, `annee`, `idUser`) VALUES (?, ?, ?, ?, ?, ?)", [$marque, $modele, $nbChevaux, $immatriculation, $annee, $idUser]);
         return "";
     } else {
         return $verify;

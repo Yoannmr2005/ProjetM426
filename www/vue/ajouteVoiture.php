@@ -54,7 +54,7 @@
                         <input class="form-control" type="number" min="10" max="3000" name="chevaux">
                         <div class="d-flex flex-column">
                             <span style="height: 17px;"></span>
-                            <button class="btn btn-primary" type="submit" style="background: var(--bs-red);">Sauvegarder</button>
+                            <button class="btn btn-primary" type="submit" name="ajouter" value="ajouter" style="background: var(--bs-red);">Sauvegarder</button>
                             <span style="height: 20px;"></span>
                         </div>
                     </div>

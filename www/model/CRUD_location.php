@@ -65,11 +65,11 @@ function update_location($idVehicule, $prix, $dateDebut, $dateFin)
 /**
  * Fonction qui supprime une location
  *
- * @param int $idVehicule
+ * @param int $idLocation
  * @return void
  */
-function delete_location($idVehicule)
+function delete_location($idLocation)
 {
-    $sql = "DELETE FROM `vehicule` WHERE idVehicule = $idVehicule";
+    $sql = "DELETE FROM `location` WHERE idlocation = $idLocation";
     $req = dbRun($sql);
 }
