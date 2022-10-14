@@ -20,6 +20,7 @@ switch ($action) {
             $dataOk = verifyDataVehicule($marque, $modele, $chevaux, $immatriculation, $annee);
             if ($dataOk == "") {
                 // Ajoute le véhicule
+                $immatriculation = str_replace("-","",$immatriculation);
                 addVehicule($marque, $modele, $chevaux, $immatriculation, $annee, $_SESSION["id"]);
                 header("location: index.php");
                 exit;

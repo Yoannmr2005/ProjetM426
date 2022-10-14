@@ -55,8 +55,17 @@ function verifyDataVehicule($marque, $modele, $nbChevaux, $immatriculation, $ann
         return "Une immatriculation est nécessaire";
     }
 
+    $immatriculation = str_replace("-","",$immatriculation);
+    if (strlen($immatriculation) != 7) {
+        return "Une immatriculation a besoin de 7 lettres/chiffres";
+    }
+
     if ($annee <= 1940) {
         return "L'année est trop ancienne";
+    }
+
+    if ($annee >= date("Y")) {
+        return "La voiture ne peut pas venir du futur";
     }
     // S'il n'y a pas d'erreurs, on retourne un string vide
     return "";
