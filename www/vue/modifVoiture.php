@@ -34,7 +34,7 @@
                         <li class="nav-item"><a class="nav-link active" href="<?=ROOT?>/?p=home">Home</a></li>
                         <li class="nav-item"></li>
                         <li class="nav-item"><a class="nav-link" href="<?=ROOT?>/?p=voiture">Liste des véhicules</a></li>
-                    </ul><a class="btn btn-primary ms-md-2" role="button" href="#"
+                    </ul><a class="btn btn-primary ms-md-2" role="button" href="?p=logout"
                         style="background: var(--bs-red);">Déconnexion</a>
                 </div>
             </div>
